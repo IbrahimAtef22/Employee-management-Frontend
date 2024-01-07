@@ -1,0 +1,136 @@
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <a class="navbar-brand">Employee Main Data</a>
+  </div>
+</nav>
+
+<!-- This is the Form of Employee Filtering Search -->
+
+<form (ngSubmit)="onSubmit()">
+  <div class="form-group p-3 mt-2 mb-4 border border-primary">
+    <div class="row">
+      <div class="col">
+        <label for="empCode" class="form-label text-primary">Employee Code</label>
+        <input type="text" class="form-control form-control-sm" id="empCode" name="employeeCode"
+          [(ngModel)]="searchedEmployee.code">
+
+      </div>
+      <div class="col">
+        <label for="name" class="form-label text-primary">Employee Name</label>
+        <input type="text" class="form-control form-control-sm" id="name" name="employeeName"
+          [(ngModel)]="searchedEmployee.name">
+      </div>
+      <div class="col">
+        <label for="date" class="form-label text-primary">Birth Date</label>
+        <input type="date" class="form-control form-control-sm" id="date" name="birthDate"
+          [(ngModel)]="searchedEmployee.birthDate">
+      </div>
+      <div class="col">
+        <label for="city" class="form-label text-primary">Birth City</label>
+        <select class="form-select form-select-sm" aria-label=".form-select-sm example"
+          [(ngModel)]="searchedEmployee.birthCity" id="city" name="birthCity">
+          <option [ngValue]="undefined" selected>select</option>
+          <option *ngFor="let option of birthCities">{{option}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="id" class="form-label text-primary">Employee ID</label>
+        <input type="text" class="form-control form-control-sm" id="id" name="employeeId"
+          [(ngModel)]="searchedEmployee.id">
+      </div>
+      <div class="col">
+        <label for="depart" class="form-label text-primary">Department</label>
+        <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="depart"
+          name="departmentName" [(ngModel)]="searchedEmployee.department">
+          <option [ngValue]="undefined" selected>select</option>
+          <option *ngFor="let option of departments">{{option}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="title" class="form-label text-primary">Job Title</label>
+        <input type="text" class="form-control form-control-sm" id="title" name="jobTitle"
+          [(ngModel)]="searchedEmployee.jobTitle">
+      </div>
+      <div class="col">
+        <label for="manager" class="form-label text-primary">Direct Manager</label>
+        <input type="text" class="form-control form-control-sm" id="manager" name="managerName"
+          [(ngModel)]="searchedEmployee.directManager">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <label for="contract" class="form-label text-primary">Contract Type</label>
+        <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="contract"
+          name="contractType" [(ngModel)]="searchedEmployee.contractType">
+          <option [ngValue]="undefined" selected>select</option>
+          <option *ngFor="let option of contractTypes">{{option}}</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label for="empStatus" class="form-label text-primary">status</label>
+        <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="empStatus" name="estatus"
+          [(ngModel)]="searchedEmployee.status">
+          <option [ngValue]="undefined" selected>select</option>
+          <option *ngFor="let option of empStatus" [ngValue]="option">{{option}}</option>
+        </select>
+      </div>
+
+
+      <div class="col-md-3">
+
+      </div>
+
+      <div class="col-md-3 mt-4  d-flex justify-content-end">
+        <button class="col-auto" type="submit" class="btn btn-primary">View</button>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</form>
+
+<!-- This is the table of all Employees -->
+
+<table class="table table-primary table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Employee Code</th>
+      <th>Employee Name</th>
+      <th>Birth Date</th>
+      <th>Birth City</th>
+      <th>Employee Id</th>
+      <th>Department</th>
+      <th>Job Title</th>
+      <th>Direct Manager</th>
+      <th>Contract Type</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>{{ employee.code}}</td>
+      <td>{{ employee.name}}</td>
+      <td>{{ employee.birthDate}}</td>
+      <td>{{ employee.birthCity}}</td>
+      <td>{{ employee.id}}</td>
+      <td>{{ employee.department?.name}}</td>
+      <td>{{ employee.jobTitle}}</td>
+      <td>{{ employee.directManager?.name}}</td>
+      <td>{{ employee.contractType}}</td>
+      <td *ngIf="employee.status === 'Active'"><a href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg"
+            viewBox="0 0 16 16">
+            <path
+              d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z" />
+          </svg>
+        </a></td>
+      <td *ngIf="employee.status === 'In Active'">{{employee.status}}</td>
+    </tr>
+  </tbody>
+</table>
