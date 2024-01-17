@@ -24,7 +24,7 @@ export class EmployeeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEmployees();
-    this.empStatus = ["Active", "In Active"];
+    this.empStatus = ["Active", "Inactive"];
   }
 
   getEmployees() {
@@ -35,6 +35,7 @@ export class EmployeeListComponent implements OnInit {
       this.departments = Array.from(new Set(this.employees.map((item: any) => item.department.name)));
       this.contractTypes = Array.from(new Set(this.employees.map((item: any) => item.contractType)));
     })
+
   }
 
   onSubmit() {
