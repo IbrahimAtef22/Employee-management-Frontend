@@ -1,12 +1,27 @@
-# Angular-Employee-Management
+# Employee Search Form App - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+This project is the frontend for the Employee Search Form App, built using Angular and Bootstrap.
+It interacts with the backend Spring Boot application to provide a user-friendly interface for
+searching employee data.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Search by Employee ID, Name, Birth Date, Birth City, Status and So on.
+- Perform complex searches by combining multiple fields.
 
+## Dependencies
 
+Ensure that the backend (Spring Boot) project is set up 
+and running to enable a complete Employee Search Form App.
+
+Backend Repo: https://github.com/IbrahimAtef22/Employee-Management-Backend
+
+## Technologies Used
+
+- Angular 16.2.0
+- TypeScript
+- Bootstrap 5.3.2
+- HTML5
 
 
 
